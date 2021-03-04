@@ -115,7 +115,7 @@ def get_data_cassandra():
 def home():
     return("""<h1>PJM Prediction Model API</h1>
         <br><br>Lancement de l'évaluation du modèle : url <a href='http://localhost:5002/evaluate' target='_blank'>localhost:5002/evaluate</a>
-        <br><br>Lancement d'une prediction : url <a href='http://localhost:5002/predict/period=10' target='_blank'>localhost:5002/predict/period=10</a>
+        <br><br>Lancement d'une prediction : url <a href='http://localhost:5002/predict/10' target='_blank'>localhost:5002/predict/period=10</a>
         <br>
         <br>
         <br>
