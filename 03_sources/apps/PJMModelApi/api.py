@@ -190,19 +190,22 @@ class Predict(Resource):
      
             # Dataset pour l'évaluation
             df = get_data_cassandra()
+            print(df.head())
             X = df['total_estimated_load'].values
             
             start_index = len(X)
             end_index = start_index + int(period)
             forecast = model_fit.predict(start=start_index, end=end_index)
             
-            day = df['date_est_load'][-1]
+            #df['date_est_load'] = df['date_est_load'].apply(pd.Timestamp)
+            day = df['date_est_load'].values[-1].date()
+            print(day)
             print(type(day))
             day += datetime.timedelta(days=1)
             
             res = {}
             for yhat in forecast:
-                res[day] = yhat
+                res[day.strftime("%d/%m/%Y")] = yhat
                 day += datetime.timedelta(days=1)
             
             return res
